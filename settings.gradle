@@ -1,0 +1,4 @@
+
+rootProject.name = "SideBar"
+include ':app'
+include ':SideBarView'
