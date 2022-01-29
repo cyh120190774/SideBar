@@ -3,6 +3,7 @@ package com.cyh.sidebarview;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,13 @@ public class TextDialog {
     }
 
     public void show(String str) {
+        if (TXT != null) TXT.setText(str);
+        if (select_dialog != null && !select_dialog.isShowing()){
+            select_dialog.show();
+        }
+    }
+
+    public void show(String str,long delay) {
         if (TXT != null) TXT.setText(str);
         if (select_dialog != null && !select_dialog.isShowing()){
             select_dialog.show();

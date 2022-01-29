@@ -1,6 +1,5 @@
 package com.cyh.sidebarview;
 
-import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -26,6 +25,7 @@ public class SideBar extends View{
     private CharSequence[] letters;
 
     private int choose = -1;// 选中
+
     private Paint paint = new Paint();
 
 
@@ -39,14 +39,18 @@ public class SideBar extends View{
 
     private TextDialog mTextDialog;
 
-    /** sidebar的字符颜色 **/
+    /** 字符颜色 **/
     private int mSideTextColor;
-    /** sidebar的字符选中时的颜色 **/
+    /** 字符选中时的颜色 **/
     private int mSideTextSelectColor;
-    /** sidebar的字符大小 **/
+    /** 字符大小 **/
     private float mSideTextSize;
-    /** sidebar的背景颜色 **/
+    /** 滑动时背景颜色 **/
     private Drawable mSideBackground;
+
+
+    private boolean isShowTextDialog = false;
+
     /** 选中弹窗字符颜色 **/
     private int mDialogTextColor;
     /** 选中弹窗字符大小 **/
@@ -59,9 +63,9 @@ public class SideBar extends View{
     private int mDialogTextBackgroundHeight;
 
 
-    public void setTextView(TextView mText) {
-        this.mText = mText;
-    }
+
+
+
     
     public SideBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -158,8 +162,8 @@ public class SideBar extends View{
         mDialogTextBackgroundHeight = a.getDimensionPixelSize(R.styleable.SideBar_dialogTextBackgroundHeight, defaultDialogTextBackgroundHeight);
         // 释放内存，回收资源
         a.recycle();
-        mTextDialog = new TextDialog(mContext, mDialogTextBackgroundWidth, mDialogTextBackgroundHeight,
-                mDialogTextColor, mDialogTextSize, mDialogTextBackground);
+
+        if (isShowTextDialog) mTextDialog = new TextDialog(mContext, mDialogTextBackgroundWidth, mDialogTextBackgroundHeight, mDialogTextColor, mDialogTextSize, mDialogTextBackground);
     }
 
 
@@ -182,6 +186,9 @@ public class SideBar extends View{
                 if (mText != null) {
                     mText.setVisibility(View.INVISIBLE);
                 }
+                if (mTextDialog != null) mTextDialog.dismiss();
+
+
                 break;
 
             default:
@@ -196,6 +203,8 @@ public class SideBar extends View{
                             mText.setText(letters[c]);
                             mText.setVisibility(View.VISIBLE);
                         }
+
+                        if (mTextDialog != null) mTextDialog.show((String) letters[c]);
 
                         choose = c;
                         invalidate();
@@ -225,6 +234,8 @@ public class SideBar extends View{
                     mText.setText(letters[c]);
                     mText.setVisibility(View.VISIBLE);
                 }
+//                if (mTextDialog != null) mTextDialog.show((String) letters[c]);
+
                 choose = c;
                 invalidate();
             }
