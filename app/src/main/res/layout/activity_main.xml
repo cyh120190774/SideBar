@@ -9,34 +9,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
 
-
-
-        <TextView
-            android:id="@+id/txt_tittle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="50dp"
-            android:gravity="center"
-            android:text="选择国家或地区代码"
-            android:textColor="#171717"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="50dp"
-            android:background="@null"
-            android:ems="10"
-            android:hint="搜索"
-            android:textColorHint="#cacaca"
-            android:visibility="gone" />
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

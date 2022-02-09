@@ -37,7 +37,7 @@ public class SideBar extends View{
 
 
 
-    private TextDialog mTextDialog;
+
 
     /** 字符颜色 **/
     private int mSideTextColor;
@@ -49,8 +49,9 @@ public class SideBar extends View{
     private Drawable mSideBackground;
 
 
-    private boolean isShowTextDialog = false;
-
+    private TextDialog mTextDialog;
+    /** 显示弹窗 **/
+    private boolean isShowTextDialog = true;
     /** 选中弹窗字符颜色 **/
     private int mDialogTextColor;
     /** 选中弹窗字符大小 **/
@@ -133,25 +134,33 @@ public class SideBar extends View{
         final int defaultSideTextSelectColor = res.getColor(R.color.default_side_text_select_color);
         final float defaultSideTextSize = res.getDimension(R.dimen.default_side_text_size);
         final Drawable defaultSideBackground = res.getDrawable(R.drawable.default_side_background);
-        final int defaultDialogTextColor = res.getColor(R.color.default_dialog_text_color);
+        final int defaultDialogTextColor = res.getColor(R.color.sidebar_default_dialog_text_color);
         final float defaultDialogTextSize = res.getDimension(R.dimen.default_dialog_text_size);
         final Drawable defaultDialogTextBackground = res.getDrawable(R.drawable.default_dialog_text_background);
         final int defaultDialogTextBackgroundWidth = res.getDimensionPixelSize(R.dimen.default_dialog_text_background_width);
         final int defaultDialogTextBackgroundHeight = res.getDimensionPixelSize(R.dimen.default_dialog_text_background_height);
         // 读取配置信息
         TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.SideBar);
+
         letters =  a.getTextArray(R.styleable.SideBar_sideTextArray);
-        
+
         if (null == letters ||letters.length <= 0){
             letters =  defaultStringArray;
         }
         mSideTextColor = a.getColor(R.styleable.SideBar_sideTextColor, defaultSideTextColor);
+
         mSideTextSelectColor = a.getColor(R.styleable.SideBar_sideTextSelectColor, defaultSideTextSelectColor);
+
         mSideTextSize = a.getDimension(R.styleable.SideBar_sideTextSize, defaultSideTextSize);
+
         mSideBackground = a.getDrawable(R.styleable.SideBar_sideBackground);
+
         if (null == mSideBackground){
             mSideBackground = defaultSideBackground;
         }
+
+        //弹窗配置
+        isShowTextDialog = a.getBoolean(R.styleable.SideBar_isShowDialog,false);
         mDialogTextColor = a.getColor(R.styleable.SideBar_dialogTextColor, defaultDialogTextColor);
         mDialogTextSize = a.getDimension(R.styleable.SideBar_dialogTextSize, defaultDialogTextSize);
         mDialogTextBackground = a.getDrawable(R.styleable.SideBar_dialogTextBackground);
@@ -181,7 +190,6 @@ public class SideBar extends View{
         switch (action) {
             case MotionEvent.ACTION_UP:
                 setBackgroundDrawable(new ColorDrawable(0x00000000));
-//			choose = -1;//
                 invalidate();
                 if (mText != null) {
                     mText.setVisibility(View.INVISIBLE);

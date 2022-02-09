@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
-    private PhoneAreaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

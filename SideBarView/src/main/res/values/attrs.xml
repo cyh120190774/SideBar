@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="SideBar">
 
         <attr name="sideTextArray" format="reference" /> <!--sidebar的字符列表-->
@@ -12,6 +13,10 @@
 
         <attr name="sideBackground" format="reference|color" /> <!--sidebar的背景颜色-->
 
+
+
+        <attr name="isShowDialog" format = "boolean" /><!--是否显示弹窗-->
+
         <attr name="dialogTextColor" format="color" /> <!--选中弹窗字符颜色-->
 
         <attr name="dialogTextSize" format="dimension" /> <!--选中弹窗字符大小-->
@@ -22,6 +27,6 @@
 
         <attr name="dialogTextBackgroundHeight" format="dimension" /> <!--选中弹窗字符背景高度-->
 
-
     </declare-styleable>
+
 </resources>
