@@ -13,8 +13,6 @@
 
         <attr name="sideBackground" format="reference|color" /> <!--sidebar的背景颜色-->
 
-
-
         <attr name="isShowDialog" format = "boolean" /><!--是否显示弹窗-->
 
         <attr name="dialogTextColor" format="color" /> <!--选中弹窗字符颜色-->

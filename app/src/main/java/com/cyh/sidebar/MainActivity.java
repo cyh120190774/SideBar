@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         // 防止输入法压缩布局
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-
         initView();
 
         initData();
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-//        mBeans.clear();
         JSONArray array = ReadAssetsJsonUtil.getJSONArray("area_phone_code.json", this);
         if (null == array) array = new JSONArray();
         for (int i = 0; i < array.length(); i++) {
@@ -60,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
         }
         // 根据拼音为数组进行排序
         Collections.sort(mBeans, new AreaPhoneBean.ComparatorPY());
-        // 数据更新
-//        adapter.notifyDataSetChanged();
     }
 
     private void initView() {
